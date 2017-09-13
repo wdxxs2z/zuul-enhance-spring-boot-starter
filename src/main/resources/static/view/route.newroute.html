@@ -1,0 +1,64 @@
+<div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-header">Create Route</h2>
+        </div>
+    </div>
+    <div class="row">
+    	<div class="col-lg-12">
+    		<div class="panel panel-default">
+    			<div class="panel-body">
+    				<div class="row">
+                    	<div class="col-lg-8">
+                        	<form role="form" name="routeForm" ng-controller="routeCtrl" ng-submit="submitRouteFrom()">
+                        		<div class="form-group">
+                                    <label>Route ID：</label>
+                                    <input required class="form-control" name="id" ng-model="formData.id">
+                                	<span ng-show="routeForm.id.$error.required">required</span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Route ServiceId：</label>
+                                    <input required class="form-control" name="serviceId" ng-model="formData.serviceId">
+                                    <span ng-show="routeForm.serviceId.$error.required">required</span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Route Path：</label>
+                                    <input required class="form-control" name="path" ng-model="formData.path">
+                                    <span ng-show="routeForm.path.$error.required">required</span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Route URL：</label>
+                                    <input class="form-control" name="url" ng-model="formData.url">
+                                </div>
+                                <div class="form-group">
+                                    <label>Route StripPrefix：</label>
+                                    <select class="form-control" name="stripPrefix" ng-model="formData.stripPrefix">
+                                         <option value="" disabled selected>custom chose true</option>
+                                         	<option ng-repeat="c in booleanChose" value="{{ c.value}}">{{c.text}}</option>
+                                     </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Route Retryable：</label>
+                                    <select class="form-control" name="retryable" ng-model="formData.retryable">
+                                         <option value="" disabled selected>custom chose false</option>
+                                         	<option ng-repeat="c in booleanChose" value="{{ c.value}}">{{c.text}}</option>
+                                     </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Route SensitiveHeaders：</label>
+                                    <select class="form-control selectpicker show-tick" name="sensitiveHeaders" ng-model="formData.sensitiveHeaders" multiple data-live-search="false">
+                                         <option value="" disabled selected>custom chose Cookie,Set-Cookie</option>
+                                         	<option ng-repeat="c in sensitiveHeadersChose" value="{{ c.value}}">{{c.text}}</option>
+                                     </select>
+                                </div>
+                                <button type="submit" class="btn btn-success btn-lg btn-block" >
+            						<span>Submit</span> 
+        						</button>    						
+                        	</form>                       	
+                        </div>
+                    </div>    	
+    			</div>
+    		</div>
+    	</div>
+    </div>
+</div>
