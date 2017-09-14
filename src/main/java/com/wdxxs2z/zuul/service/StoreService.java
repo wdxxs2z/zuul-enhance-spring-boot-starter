@@ -6,6 +6,8 @@ public class StoreService {
 	
 	private Boolean enabled;
 	
+	private Boolean fallback;
+	
 	public String printDescription() {
 		return "Print description: " + description;
 	}
@@ -26,4 +28,11 @@ public class StoreService {
 		this.enabled = enabled;
 	}
 
+	public Boolean getFallback() {
+		return fallback;
+	}
+
+	public void setFallback(Boolean fallback) {
+		this.fallback = fallback;
+	}
 }

@@ -8,6 +8,8 @@ public class StoreServiceProperties {
 	private String description;
 	
 	private Boolean enabled;
+	
+	private Boolean fallback;
 
 	public String getDescription() {
 		return description;
@@ -23,5 +25,13 @@ public class StoreServiceProperties {
 
 	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
+	}
+
+	public Boolean getFallback() {
+		return fallback;
+	}
+
+	public void setFallback(Boolean fallback) {
+		this.fallback = fallback;
 	}
 }
