@@ -10,6 +10,8 @@ public class StoreServiceProperties {
 	private Boolean enabled;
 	
 	private Boolean fallback;
+	
+	private Boolean dashboard;
 
 	public String getDescription() {
 		return description;
@@ -33,5 +35,13 @@ public class StoreServiceProperties {
 
 	public void setFallback(Boolean fallback) {
 		this.fallback = fallback;
+	}
+
+	public Boolean getDashboard() {
+		return dashboard;
+	}
+
+	public void setDashboard(Boolean dashboard) {
+		this.dashboard = dashboard;
 	}
 }

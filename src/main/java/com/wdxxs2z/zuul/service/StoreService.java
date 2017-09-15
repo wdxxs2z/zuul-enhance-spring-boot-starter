@@ -8,6 +8,8 @@ public class StoreService {
 	
 	private Boolean fallback;
 	
+	private Boolean dashboard;
+	
 	public String printDescription() {
 		return "Print description: " + description;
 	}
@@ -34,5 +36,13 @@ public class StoreService {
 
 	public void setFallback(Boolean fallback) {
 		this.fallback = fallback;
+	}
+
+	public Boolean getDashboard() {
+		return dashboard;
+	}
+
+	public void setDashboard(Boolean dashboard) {
+		this.dashboard = dashboard;
 	}
 }

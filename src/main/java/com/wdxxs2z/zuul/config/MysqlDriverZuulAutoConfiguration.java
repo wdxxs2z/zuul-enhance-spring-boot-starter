@@ -22,6 +22,7 @@ import com.wdxxs2z.zuul.repository.MysqlDriverZuulRouteStore;
 import com.wdxxs2z.zuul.repository.ZuulRouteStore;
 import com.wdxxs2z.zuul.service.StoreService;
 import com.wdxxs2z.zuul.service.StoreServiceProperties;
+import com.wdxxs2z.zuul.ui.DashboardController;
 
 
 /**
@@ -42,6 +43,12 @@ public class MysqlDriverZuulAutoConfiguration {
     	StoreService storeService = new StoreService();                                                                                     
     	storeService.setDescription(storeServiceProperties.getDescription());                                                                               
         return storeService;                                                                                                            
+    }
+    
+    @Bean
+	@ConditionalOnProperty(prefix="zuul.store.mysql", value = "dashboard", havingValue = "true", matchIfMissing = false)
+    public DashboardController dashboardController() {
+        return new DashboardController();
     }
 	
 	@Bean
