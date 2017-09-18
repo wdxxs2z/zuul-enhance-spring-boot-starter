@@ -14,11 +14,11 @@ import com.wdxxs2z.zuul.repository.ZuulRouteStore;
  * StoreProxyRouteLocator extends DiscoveryClientRouteLocator implements RefreshableRouteLocator.
  * @author wdxxs2z
  */
-public class StoreProxyRouteLocator extends DiscoveryClientRouteLocator{
+public class RefershProxyRouteLocator extends DiscoveryClientRouteLocator{
 	
 	private final ZuulRouteStore store;
 
-	public StoreProxyRouteLocator(String servletPath, DiscoveryClient discovery, ZuulProperties properties,
+	public RefershProxyRouteLocator(String servletPath, DiscoveryClient discovery, ZuulProperties properties,
 			ZuulRouteStore store) {
 		super(servletPath, discovery, properties);
 		this.store = store;

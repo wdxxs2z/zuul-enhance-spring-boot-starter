@@ -1,4 +1,4 @@
-# Zuul Api Gateway Mysql Store
+# Zuul Enhance Spring Boot Starter
 
 Provider a simple ui,a custom fallback provider,and use mysql store the routes.
 
@@ -6,7 +6,7 @@ Provider a simple ui,a custom fallback provider,and use mysql store the routes.
 ```
 <dependency>
 	<groupId>com.wdxxs2z</groupId>
-	<artifactId>zuul-route-mysql-spring-boot-starter</artifactId>
+	<artifactId>zuul-enhance-spring-boot-starter</artifactId>
 	<version>0.0.3</version>
 </dependency>
 ```
@@ -15,11 +15,15 @@ Provider a simple ui,a custom fallback provider,and use mysql store the routes.
 ```
 zuul:
   ignoredServices: '*'
-  store:
-    mysql:
+  enhance:
+    store:
+      mysql:
+        enabled: true
+    description: "This is zuul enhance support."
+    fallback:
       enabled: true
-      fallback: true
-      dashboard: true
+    dashboard:
+      enabled: true
 ```
 
 ## Configure your mysql store

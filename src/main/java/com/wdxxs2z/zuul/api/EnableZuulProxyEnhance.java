@@ -9,13 +9,11 @@ import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Import;
 
-import com.wdxxs2z.zuul.config.ZuulProxyRefreshStoreConfiguration;
+import com.wdxxs2z.zuul.config.ZuulProxyRefreshEnhanceConfiguration;
 
 @EnableCircuitBreaker
 @EnableDiscoveryClient
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-@Import(ZuulProxyRefreshStoreConfiguration.class)
-public @interface EnableZuulProxyStore {
-
-}
+@Import(ZuulProxyRefreshEnhanceConfiguration.class)
+public @interface EnableZuulProxyEnhance{}

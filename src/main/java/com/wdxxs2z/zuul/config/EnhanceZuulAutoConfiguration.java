@@ -20,8 +20,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.wdxxs2z.zuul.repository.MysqlDriverZuulRouteStore;
 import com.wdxxs2z.zuul.repository.ZuulRouteStore;
-import com.wdxxs2z.zuul.service.StoreService;
-import com.wdxxs2z.zuul.service.StoreServiceProperties;
+import com.wdxxs2z.zuul.service.EnhanceService;
+import com.wdxxs2z.zuul.service.EnhanceServiceProperties;
 import com.wdxxs2z.zuul.ui.DashboardController;
 
 
@@ -30,35 +30,35 @@ import com.wdxxs2z.zuul.ui.DashboardController;
  * @author wdxxs2z
  */
 @Configuration
-@EnableConfigurationProperties(value = StoreServiceProperties.class)
-@ConditionalOnClass(StoreService.class)
-public class MysqlDriverZuulAutoConfiguration {
+@EnableConfigurationProperties(value = EnhanceServiceProperties.class)
+@ConditionalOnClass(EnhanceService.class)
+public class EnhanceZuulAutoConfiguration {
 	
 	@Autowired                                                                                                                              
-    private StoreServiceProperties storeServiceProperties;                                                                                  
+    private EnhanceServiceProperties enhanceServiceProperties;                                                                                  
                                                                                                                                             
     @Bean                                                                                                                                   
-    @ConditionalOnMissingBean(StoreService.class)                                                                                           
-    public StoreService storeService() {                                                                                                    
-    	StoreService storeService = new StoreService();                                                                                     
-    	storeService.setDescription(storeServiceProperties.getDescription());                                                                               
-        return storeService;                                                                                                            
+    @ConditionalOnMissingBean(EnhanceService.class)                                                                                           
+    public EnhanceService enhanceService() {                                                                                                    
+    	EnhanceService enhanceService = new EnhanceService();                                                                                     
+    	enhanceService.setDescription(enhanceServiceProperties.getDescription());                                                                               
+        return enhanceService;                                                                                                          
     }
     
     @Bean
-	@ConditionalOnProperty(prefix="zuul.store.mysql", value = "dashboard", havingValue = "true", matchIfMissing = false)
+	@ConditionalOnProperty(prefix="zuul.enhance.dashboard", value = "enabled", havingValue = "true", matchIfMissing = false)
     public DashboardController dashboardController() {
         return new DashboardController();
     }
 	
 	@Bean
-	@ConditionalOnProperty(prefix="zuul.store.mysql", value = "enabled", havingValue = "true", matchIfMissing = false)
+	@ConditionalOnProperty(prefix="zuul.enhance.store.mysql", value = "enabled", havingValue = "true", matchIfMissing = false)
     public ZuulRouteStore mysqlZuulRouteStore(JdbcTemplate jdbcTemplate) {
         return new MysqlDriverZuulRouteStore(jdbcTemplate);
     }
 	
 	@Bean
-	@ConditionalOnProperty(prefix="zuul.store.mysql", value = "fallback", havingValue = "true", matchIfMissing = false)
+	@ConditionalOnProperty(prefix="zuul.enhance.fallback", value = "enabled", havingValue = "true", matchIfMissing = false)
 	public ZuulFallbackProvider fallbackProvider() {
 		
 		return new ZuulFallbackProvider() {

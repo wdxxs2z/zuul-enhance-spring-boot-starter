@@ -9,7 +9,7 @@ import org.springframework.cloud.netflix.zuul.filters.discovery.DiscoveryClientR
 import org.springframework.context.annotation.Configuration;
 
 import com.wdxxs2z.zuul.repository.ZuulRouteStore;
-import com.wdxxs2z.zuul.route.StoreProxyRouteLocator;
+import com.wdxxs2z.zuul.route.RefershProxyRouteLocator;
 
 /**
  * Override the ZuulProxyAutoConfiguration's discoveryRouteLocator() method, use zuulRouteStore instead of serviceRouteMapper.
@@ -17,7 +17,7 @@ import com.wdxxs2z.zuul.route.StoreProxyRouteLocator;
  * @author wdxxs2z
  */
 @Configuration
-public class ZuulProxyRefreshStoreConfiguration extends ZuulProxyAutoConfiguration{
+public class ZuulProxyRefreshEnhanceConfiguration extends ZuulProxyAutoConfiguration{
 
 	@Autowired
     private ZuulRouteStore zuulRouteStore;
@@ -33,6 +33,6 @@ public class ZuulProxyRefreshStoreConfiguration extends ZuulProxyAutoConfigurati
 
 	@Override
 	public DiscoveryClientRouteLocator discoveryRouteLocator() {
-		return new StoreProxyRouteLocator(server.getServletPath(), discovery, zuulProperties, zuulRouteStore);
+		return new RefershProxyRouteLocator(server.getServletPath(), discovery, zuulProperties, zuulRouteStore);
 	}
 }
