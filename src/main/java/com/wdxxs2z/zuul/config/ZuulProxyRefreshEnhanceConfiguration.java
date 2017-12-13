@@ -33,6 +33,6 @@ public class ZuulProxyRefreshEnhanceConfiguration extends ZuulProxyAutoConfigura
 
 	@Override
 	public DiscoveryClientRouteLocator discoveryRouteLocator() {
-		return new RefershProxyRouteLocator(server.getServletPath(), discovery, zuulProperties, zuulRouteStore);
+		return new RefershProxyRouteLocator(server.getServletPath(), discovery, zuulProperties, zuulRouteStore, discovery.getLocalServiceInstance());
 	}
 }

@@ -65,6 +65,7 @@
                 		</td>
                 		<td style="white-space: nowrap">
        					<form editable-form name="rowform" onbeforesave="saveRoute(route.id, $data)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == route">
+         					<input type="hidden" id="csrf_token" name="${_csrf.parameterName}" value="${_csrf.token}"/>
          					<button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">save</button>
          					<button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">cancel</button>
        					</form>

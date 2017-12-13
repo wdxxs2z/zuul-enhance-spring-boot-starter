@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.cloud.netflix.zuul.filters.route.ZuulFallbackProvider;
+import org.springframework.cloud.netflix.zuul.filters.route.FallbackProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
@@ -59,15 +59,15 @@ public class EnhanceZuulAutoConfiguration {
 	
 	@Bean
 	@ConditionalOnProperty(prefix="zuul.enhance.fallback", value = "enabled", havingValue = "true", matchIfMissing = false)
-	public ZuulFallbackProvider fallbackProvider() {
+	public FallbackProvider fallbackProvider() {
 		
-		return new ZuulFallbackProvider() {
-			
+		return new FallbackProvider() {
+
 			@Override
 			public String getRoute() {
 				return "*";
 			}
-			
+
 			@Override
 			public ClientHttpResponse fallbackResponse() {
 				return new ClientHttpResponse() {
@@ -106,6 +106,12 @@ public class EnhanceZuulAutoConfiguration {
 					
 				};
 			}
+
+			@Override
+			public ClientHttpResponse fallbackResponse(Throwable cause) {
+				return null;
+			}
+			
 		};
 	}
 	

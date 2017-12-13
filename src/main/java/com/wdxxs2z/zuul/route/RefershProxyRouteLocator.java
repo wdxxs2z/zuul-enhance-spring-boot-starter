@@ -2,6 +2,7 @@ package com.wdxxs2z.zuul.route;
 
 import java.util.LinkedHashMap;
 
+import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.netflix.zuul.filters.ZuulProperties;
 import org.springframework.cloud.netflix.zuul.filters.ZuulProperties.ZuulRoute;
@@ -19,8 +20,8 @@ public class RefershProxyRouteLocator extends DiscoveryClientRouteLocator{
 	private final ZuulRouteStore store;
 
 	public RefershProxyRouteLocator(String servletPath, DiscoveryClient discovery, ZuulProperties properties,
-			ZuulRouteStore store) {
-		super(servletPath, discovery, properties);
+			ZuulRouteStore store, ServiceInstance serviceIntance) {
+		super(servletPath, discovery, properties, serviceIntance);
 		this.store = store;
 	}
 
